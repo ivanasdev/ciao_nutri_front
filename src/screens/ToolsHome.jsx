@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ToolsGrid = ({ setShowCrear, setShowMisPacientes,setShowCrearCita }) => {
   const [openMenu, setOpenMenu] = useState(null);
+  const navigate = useNavigate();
 
 
   const toggleMenu = (menu) => {
@@ -23,7 +25,6 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes,setShowCrearCita }) => {
           <div className="submenu-card">
             <p onClick={() => setShowCrear(true)}>➕ Crear paciente</p>
             <p onClick={() => setShowMisPacientes(true)}>📄 Mis pacientes</p>
-
             <p>🥗 Plan por paciente</p>
           </div>
         )}
@@ -48,8 +49,10 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes,setShowCrearCita }) => {
           <p>Crear y editar planes personalizados</p>
         </div>
 
-        {openMenu === "planes" && (
+            {openMenu === "planes" && (
           <div className="submenu-card">
+            <p onClick={() => navigate("/ciao_planner")}>📄 CiaO Planner</p>
+
             <p>➕ Crear plan</p>
             <p>📘 Mis planes</p>
           </div>

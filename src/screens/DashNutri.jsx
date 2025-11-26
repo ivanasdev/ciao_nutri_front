@@ -6,7 +6,11 @@
 import React, { useState } from "react";
 
 //import { Navigate, useNavigate } from "react-router-dom";
+
 import { useUser } from "../context/userContesxt";
+import { useNavigate } from "react-router-dom";
+
+//Modales
 import InfoNutriologoModal from "./Nutri_Info";
 import SidebarPopup from "./SidePop";
 import ToolsGrid from "./ToolsHome";
@@ -14,12 +18,12 @@ import CrearPacienteModal from "./NewPatient";
 import MisPacientesModal from "./MyPatients";
 import CrearCitaModal from "../modals/crearCitaModal";
 
+
 const DashboardNutriologo = () => {
   const { user, logout } = useUser();
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   const [showCrear, setShowCrear] = useState(false);
   const [showCrearCita, setShowCrearCita] = useState(false);
-
   const [showMisPacientes, setShowMisPacientes] = useState(false);
 
   return (
@@ -38,11 +42,14 @@ const DashboardNutriologo = () => {
         <InfoNutriologoModal user={user} />
 
         {/* GRID de herramientas */}
-        <ToolsGrid
+       <ToolsGrid
           setShowCrear={setShowCrear}
           setShowMisPacientes={setShowMisPacientes}
           setShowCrearCita={setShowCrearCita}
+
+
         />
+
 
         <CrearPacienteModal
           open={showCrear}
@@ -55,6 +62,8 @@ const DashboardNutriologo = () => {
           idNutriologo={user.id_nutriologo}
         />
         <CrearCitaModal open={showCrearCita} setOpen={setShowCrearCita} />
+
+
       </main>
     </div>
   );
