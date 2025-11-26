@@ -21,23 +21,18 @@ const SidebarPopup = ({ logout }) => {
 
         <ul className="sidebar-menu">
           <li onClick={() => navigate("/")}>
-            <span>🏠</span> Inicio
+            <span>Notificaciones</span> 
           </li>
           <li onClick={() => navigate("/pacientes")}>
-            <span>📋</span> Pacientes
+            <span> Metricas </span>
           </li>
           <li onClick={() => navigate("/citas")}>
-            <span>📅</span> Citas
-          </li>
+            <span> Citas
+ </span>          </li>
           <li onClick={() => navigate("/plan-alimentos")}>
-            <span>🥗</span> Planes
+            <span> Planes </span>
           </li>
-          <li onClick={() => navigate("/metricas")}>
-            <span>📊</span> Métricas
-          </li>
-          <li onClick={() => navigate("/mensajes")}>
-            <span>💬</span> Mensajes
-          </li>
+      
         </ul>
 
         <button className="btn-logout" onClick={logout}>

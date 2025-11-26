@@ -17,6 +17,9 @@ import LoginNutriologo from "./screens/login_home";
 import { useUser } from "./context/userContesxt";
 import "./App.css"
 import CiaoPlannerTools from "./screens/CiaoPlannerT";
+import NavBarCiao from "./navigation/BarNav";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function AppContent() {
   const { user } = useUser();  // <-- lee si el user está logueado
@@ -24,24 +27,23 @@ function AppContent() {
   const isLogged = !!user;     // true si hay usuario
 
   return (
-    <BrowserRouter>
+ <BrowserRouter>
+      {isLogged && <NavBarCiao />}  {/* <-- aquí si lo puedes poner */}
+      
       <Routes>
 
-        {/* Si NO está logueado: puede ver home y login */}
-        {/* Si está logueado: se redirige a home_nutri */}
+        {/* Home */}
         <Route
           path="/"
-          element={!isLogged ? <HomePage /> : <Navigate to="/" />}
+          element={!isLogged ? <HomePage /> : <Navigate to="/home_nutri" />}
         />
-        
-        <Route
-          path="/login_user"
-          element={<LoginNutriologo />}
-        />
+
+        {/* Login */}
+        <Route path="/login_user" element={<LoginNutriologo />} />
 
         <Route
           path="/login_nutri"
-          element={!isLogged ?  <Navigate to="/login_user" /> : <Navigate to="/home_nutri" />}
+          element={!isLogged ? <Navigate to="/login_user" /> : <Navigate to="/home_nutri" />}
         />
 
         {/* Rutas protegidas */}
@@ -50,7 +52,7 @@ function AppContent() {
           element={isLogged ? <DashboardNutriologo /> : <Navigate to="/" />}
         />
 
-            <Route
+        <Route
           path="/ciao_planner"
           element={isLogged ? <CiaoPlannerTools /> : <Navigate to="/" />}
         />
@@ -65,14 +67,16 @@ function AppContent() {
           element={isLogged ? <ExpedientePage /> : <Navigate to="/" />}
         />
 
-        <Route path="*" element={<Navigate to={isLogged ? "/home_nutri" : "/"} />} />
-
+        {/* Catch all */}
+        <Route
+          path="*"
+          element={<Navigate to={isLogged ? "/home_nutri" : "/"} />}
+        />
 
       </Routes>
     </BrowserRouter>
   );
 }
-
 function App() {
   return (
     <UserProvider>
@@ -80,5 +84,6 @@ function App() {
     </UserProvider>
   );
 }
+
 
 export default App;

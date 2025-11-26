@@ -49,14 +49,14 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes,setShowCrearCita }) => {
           <p>Crear y editar planes personalizados</p>
         </div>
 
-            {openMenu === "planes" && (
-          <div className="submenu-card">
-            <p onClick={() => navigate("/ciao_planner")}>📄 CiaO Planner</p>
+          {openMenu === "planes" && (
+        <div className="submenu-card">
+          <p onClick={() => navigate("/ciao_planner")}>📄 CiaO Planner</p>
 
-            <p>➕ Crear plan</p>
-            <p>📘 Mis planes</p>
-          </div>
-        )}
+          <p>➕ Crear plan</p>
+          <p>📘 Mis planes</p>
+        </div>
+      )}
 
         {/* --- MÉTRICAS --- */}
         <div className="tool-card" onClick={() => toggleMenu("metricas")}>
