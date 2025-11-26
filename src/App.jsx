@@ -16,6 +16,7 @@ import FormHistorialClinico from "./forms/HistClinForm";
 import LoginNutriologo from "./screens/login_home";
 import { useUser } from "./context/userContesxt";
 import "./App.css"
+import CiaoPlannerTools from "./screens/CiaoPlannerT";
 
 function AppContent() {
   const { user } = useUser();  // <-- lee si el user está logueado
@@ -47,6 +48,11 @@ function AppContent() {
         <Route
           path="/home_nutri"
           element={isLogged ? <DashboardNutriologo /> : <Navigate to="/" />}
+        />
+
+            <Route
+          path="/ciao_planner"
+          element={isLogged ? <CiaoPlannerTools /> : <Navigate to="/" />}
         />
 
         <Route
