@@ -83,6 +83,32 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes,setShowCrearCita }) => {
             <p>📝 Nuevo mensaje</p>
           </div>
         )}
+
+         {/* --- MENSAJES --- */}
+        <div className="tool-card" onClick={() => toggleMenu("mensajes")}>
+          <h5>Consulta Remota</h5>
+          <p>Co</p>
+        </div>
+
+        {openMenu === "mensajes" && (
+          <div className="submenu-card">
+            <p>Generar formulario</p>
+            <p>Ver formularios</p>
+          </div>
+        )}
+
+         {/* --- MENSAJES --- */}
+        <div className="tool-card" onClick={() => toggleMenu("mensajes")}>
+          <h5>💬 Mensajes</h5>
+          <p>Comunicación con pacientes</p>
+        </div>
+
+        {openMenu === "mensajes" && (
+          <div className="submenu-card">
+            <p>✉ Bandeja de entrada</p>
+            <p>📝 Nuevo mensaje</p>
+          </div>
+        )}
       </div>
     </>
   );

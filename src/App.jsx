@@ -28,7 +28,7 @@ function AppContent() {
 
   return (
  <BrowserRouter>
-      {isLogged && <NavBarCiao />}  {/* <-- aquí si lo puedes poner */}
+    {/*  {isLogged && <NavBarCiao />}   */}
       
       <Routes>
 

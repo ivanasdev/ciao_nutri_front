@@ -2,7 +2,7 @@
   font-family: 'IBM Plex Mono', Courier, monospace;
   min-width: 100%;
   text-align: center;
-  background-image: url('./assets/img/n4.jpg');
+  background-image: url('./assets/img/n5.jpg');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -10,6 +10,42 @@
   height: auto; /* permite que el contenedor se expanda */
   min-height: 100vh; /* sigue ocupando mínimo la pantalla */
 }
+
+/*Dashboard*/
+.dashboard-container {
+  min-height: 100vh;
+  background: #01b5f600;
+  font-family:'Courier New', Courier, monospace
+}
+.main-content {
+  flex: 1;
+  padding: 27px;
+}
+
+
+/*Header Container*/
+.header-container {
+  width: 100%;
+  margin-top: 55px;
+  margin-bottom: 27px;
+  border-radius: 36px;
+  padding: 12px 24px;
+  background: #feffff65;
+  border-bottom: 1px solid #1e0606;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.header-content {
+  background: rgba(255, 255, 255, 0.058);
+  backdrop-filter: blur(10px);
+  padding: 1.2rem 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 
 
 
@@ -320,13 +356,6 @@
 }
 
 
-/* Layout general */
-.dashboard-container {
-  display: flex;
-  min-height: 100vh;
-  background: #04378424;
-  font-family: "Inter", sans-serif;
-}
 
 /* --- SIDEBAR --- */
 .sidebar {
@@ -380,10 +409,6 @@
 }
 
 /* --- MAIN CONTENT --- */
-.main-content {
-  flex: 1;
-  padding: 30px;
-}
 
 /* Header */
 .header h2 {
@@ -393,7 +418,7 @@
 
 /* Info card */
 .info-card {
-  background: rgba(153, 149, 170, 0.334);
+  background: rgba(57, 24, 203, 0.334);
   padding: 25px;
   border-radius: 12px;
   margin-top: 20px;
@@ -424,16 +449,18 @@
   margin-bottom: 15px;
   font-size: 1.4rem;
   font-weight: 600;
+  
 }
 
 .grid-tools {
   display: grid;
+
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 20px;
 }
 
 .tool-card {
-  background: rgba(255, 255, 255, 0.385);
+  background-color: #0056b3;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.08);
@@ -664,7 +691,7 @@
   margin-bottom: 20px;
   padding: 15px;
   border-radius: 12px;
-  background: rgba(0,0,0,0.25);
+  background: rgba(0, 0, 0, 0.775);
   backdrop-filter: blur(10px);
   color: #fff;
   animation: fadeIn 0.25s ease;
@@ -1019,4 +1046,67 @@
 .planner-card p {
   font-size: 14px;
   opacity: .8;
+}
+
+
+
+
+
+
+.header-title {
+  margin: 0;
+  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  color: #222;
+}
+
+.header-badge {
+  margin-left: 8px;
+  background: #23a608;
+  color: rgb(17, 1, 1);
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+
+
+button {
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* Estilos tipo Bootstrap */
+.btn-outline-primary {
+  border: 1px solid #0d6efd;
+  color: #0d6efd;
+  background: transparent;
+}
+.btn-outline-primary:hover {
+  background: #0d6efd;
+  color: white;
+}
+
+.btn-outline-success {
+  border: 1px solid #198754;
+  color: #198754;
+  background: transparent;
+}
+.btn-outline-success:hover {
+  background: #198754;
+  color: white;
+}
+
+.btn-outline-danger {
+  border: 1px solid #dc3545;
+  color: #dc3545;
+  background: transparent;
+}
+.btn-outline-danger:hover {
+  background: #dc3545;
+  color: white;
 }
