@@ -5,30 +5,22 @@ import CrearPacienteModal from "./NewPatient";
 import MisPacientesModal from "./MyPatients";
 import CrearCitaModal from "../modals/crearCitaModal";
 
-function NutriHeaderMain({ user, onLogout, onGoPlanner, onGoProfile }) {
+//IMG
+import img1 from "../assets/icons/acc.png";
+import img2 from "../assets/icons/sets.png";
+
+function NutriHeaderMain({ user }) {
   const [showCrear, setShowCrear] = useState(false);
   const [showCrearCita, setShowCrearCita] = useState(false);
   const [showMisPacientes, setShowMisPacientes] = useState(false);
   return (
     <div className="header-container">
       <div className="header-content">
-        <h4 className="header-title">
-          Bienvenido, {user.st_username}
-          <span className="header-badge">ID {user.id_nutriologo}</span>
-        </h4>
+        <h4 className="header-title">{user.st_username}</h4>
 
         <div className="header-buttons">
-          <button className="btn-outline-primary" onClick={onGoProfile}>
-            Mi perfil
-          </button>
-
-          <button className="btn-outline-success" onClick={onGoPlanner}>
-            Planner
-          </button>
-
-          <button className="btn-outline-danger" onClick={onLogout}>
-            Cerrar sesión
-          </button>
+          <img src={img1} className="img-headerTop" />
+          <img src={img2} className="img-headerTop" />
         </div>
       </div>
 
