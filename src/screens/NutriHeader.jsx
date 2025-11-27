@@ -14,6 +14,7 @@ function NutriHeaderMain({ user }) {
   const [showCrearCita, setShowCrearCita] = useState(false);
   const [showMisPacientes, setShowMisPacientes] = useState(false);
   return (
+
     <div className="header-container">
       <div className="header-content">
         <h4 className="header-title">{user.st_username}</h4>

@@ -17,7 +17,6 @@ import LoginNutriologo from "./screens/login_home";
 import { useUser } from "./context/userContesxt";
 import "./App.css"
 import CiaoPlannerTools from "./screens/CiaoPlannerT";
-import NavBarCiao from "./navigation/BarNav";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -28,7 +27,7 @@ function AppContent() {
 
   return (
  <BrowserRouter>
-    {/*  {isLogged && <NavBarCiao />}   */}
+
       
       <Routes>
 

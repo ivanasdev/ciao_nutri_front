@@ -2,7 +2,7 @@
   font-family: 'IBM Plex Mono', Courier, monospace;
   min-width: 100%;
   text-align: center;
-
+  background-image: url('./assets/img/n5.jpg');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -30,13 +30,13 @@
   margin-bottom: 27px;
   border-radius: 36px;
   padding: 12px 24px;
-  background: #feffff00;
+  background: #11a3a300;
   border-bottom: 1px solid #1e0606;
   box-shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
 
 .header-content {
-  background: rgba(6, 177, 9, 0.761);
+  background: rgba(207, 222, 208, 0.263);
   backdrop-filter: blur(10px);
   padding: 1.2rem 1.5rem;
   border-radius: 15px;
@@ -57,12 +57,32 @@
 .img-headerTop{
   height: 50px;
   width: 50px;
-  background-color: #090909ae;
+  background-color: #9e3434ae;
   margin: 9px;
   border-radius: 9px;
 }
 
-/*END HEADER*/
+/* END HEADER */
+
+/* TOOLGRID */
+.tool-card {
+  padding: 20px;
+  border-radius: 14px;
+  background: rgba(134, 4, 4, 0.545);
+  backdrop-filter: blur(12px);
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 8px 25px rgba(255,255,255,0.15);
+}
+
+.tool-card:hover {
+  background: rgba(255,255,255,0.28);
+  transform: translateY(-3px);
+}
+
+/* END TOOLGRID */
+
 
 
 
@@ -71,7 +91,7 @@
   position: relative;
   height: 100vh;
   width: 100%;
-  background-color: rgba(70, 70, 70, 0.775);
+  background-color: rgba(0, 0, 0, 0.775);
   background-size: cover;
   background-position: center;
   display: flex;
@@ -669,22 +689,6 @@
   background: rgba(255, 80, 80, 0.6);
 }
 /* Tarjetas principales */
-.tool-card {
-  padding: 20px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.545);
-  backdrop-filter: blur(12px);
-  color: rgb(0, 0, 0);
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 8px 25px rgba(255,255,255,0.15);
-}
-
-.tool-card:hover {
-  background: rgba(255,255,255,0.28);
-  transform: translateY(-3px);
-}
-
 /* Submenu */
 .submenu-card {
   margin-top: -10px;
@@ -705,7 +709,7 @@
 }
 
 .submenu-card p:hover {
-  background: rgba(255,255,255,0.15);
+  background: rgba(206, 13, 13, 0.15);
 }
 
 /* Animación */
@@ -719,7 +723,7 @@
   height: 500px;
   padding: 5px;
   border-radius: 16px;
-  background: rgba(245, 240, 240, 0.852);
+  background: rgba(187, 19, 19, 0.852);
   backdrop-filter: blur(12px);
   color: white;
 }
@@ -1064,13 +1068,7 @@
 
 
 
-button {
-  padding: 6px 12px;
-  font-size: 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.2s;
-}
+
 
 /* Estilos tipo Bootstrap */
 .btn-outline-primary {
