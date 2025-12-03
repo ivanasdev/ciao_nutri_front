@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const ToolsGrid = ({ setShowCrear, setShowMisPacientes,setShowCrearCita }) => {
+const ToolsGrid = ({ setShowCrear, setShowMisPacientes, setShowCrearCita }) => {
   const [openMenu, setOpenMenu] = useState(null);
   const navigate = useNavigate();
-
 
   const toggleMenu = (menu) => {
     setOpenMenu(openMenu === menu ? null : menu);
@@ -29,7 +28,7 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes,setShowCrearCita }) => {
           </div>
         )}
 
-             {/* --- CITAS --- */}
+        {/* --- CITAS --- */}
         <div className="tool-card" onClick={() => toggleMenu("citas")}>
           <h5>📅 Citas</h5>
           <p>Agendar y administrar consultas</p>
@@ -49,14 +48,14 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes,setShowCrearCita }) => {
           <p>Crear y editar planes personalizados</p>
         </div>
 
-          {openMenu === "planes" && (
-        <div className="submenu-card">
-          <p onClick={() => navigate("/ciao_planner")}>📄 CiaO Planner</p>
+        {openMenu === "planes" && (
+          <div className="submenu-card">
+            <p onClick={() => navigate("/ciao_planner")}>📄 CiaO Planner</p>
 
-          <p>➕ Crear plan</p>
-          <p>📘 Mis planes</p>
-        </div>
-      )}
+            <p>➕ Crear plan</p>
+            <p>📘 Mis planes</p>
+          </div>
+        )}
 
         {/* --- MÉTRICAS --- */}
         <div className="tool-card" onClick={() => toggleMenu("metricas")}>
@@ -84,7 +83,7 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes,setShowCrearCita }) => {
           </div>
         )}
 
-         {/* --- MENSAJES --- */}
+        {/* --- MENSAJES --- */}
         <div className="tool-card" onClick={() => toggleMenu("mensajes")}>
           <h5>Consulta Remota</h5>
           <p>Co</p>
@@ -97,7 +96,7 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes,setShowCrearCita }) => {
           </div>
         )}
 
-         {/* --- MENSAJES --- */}
+        {/* --- MENSAJES --- */}
         <div className="tool-card" onClick={() => toggleMenu("mensajes")}>
           <h5>💬 Mensajes</h5>
           <p>Comunicación con pacientes</p>

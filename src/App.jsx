@@ -18,6 +18,7 @@ import { useUser } from "./context/userContesxt";
 import "./App.css"
 import CiaoPlannerTools from "./screens/CiaoPlannerT";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import BuscadorAlimentos from "./forms/BuscadorHome";
 
 
 function AppContent() {
@@ -49,6 +50,11 @@ function AppContent() {
         <Route
           path="/home_nutri"
           element={isLogged ? <DashboardNutriologo /> : <Navigate to="/" />}
+        />
+
+        <Route
+          path="/buscador_name"
+          element={isLogged ? <BuscadorAlimentos /> : <Navigate to="/" />}
         />
 
         <Route

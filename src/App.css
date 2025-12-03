@@ -23,39 +23,147 @@
 
 
 /*Header Container*/
-.header-container {
-  width: 100%;
-  margin-bottom: 27px;
-  border-radius: 36px;
-  padding: 12px 24px;
-  background: #11a3a300;
-  border-bottom: 1px solid #1e0606;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-}
-
 .hc_01 {
-  background: rgba(1, 176, 158, 0.495);
+  margin-top: 63px;
+  background: rgba(1, 132, 176, 0.495);
   backdrop-filter: blur(10px);
-  padding: 1.2rem 1.5rem;
   border-radius: 15px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
-  display: flex;
+  padding: 1rem 1.5rem;
 
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Contenedor principal del header (icons + textos) */
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: space-between; /* distribuye mejor el espacio */
+  width: 100%;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* contenedor derecha para username e invitación */
+.header-right {
+  display: flex;
+  gap: 14px;
   align-items: center;
 }
 
+/* Ajuste de imágenes */
+.img-headerTop {
+  height: 45px;
+  width: 45px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform .2s;
+}
+
+.img-headerTop:hover {
+  transform: scale(1.08);
+}
+
+/* Títulos dentro del header */
 .header-title {
-  margin: 0;
-  font-size: 18px;
+  font-size: 1rem;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
   color: #222;
+  margin-left: auto; /* Esto empuja los títulos al extremo derecho */
 }
 
+/* Responsivo */
+@media (max-width: 600px) {
+  .header-buttons {
+    justify-content: center;
+  }
+  .header-title {
+    margin-left: 0;
+  }
+}
+
+.search-container {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
+
+.search-input {
+  width: 220px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1.5px solid #0e5750;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(6px);
+  outline: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.search-input:focus {
+  border-color: #00c4a7;
+  transform: scale(1.03);
+}
 
 
 /* END HEADER */
 
+/*BUSCAODR */
+.buscador-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  margin: auto;
+}
+
+.results-box {
+  position: absolute;
+  top: 105%;
+  width: 100%;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(7px);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 6px 0;
+  list-style: none;
+  overflow: hidden;
+  z-index: 40;
+}
+
+.result-item {
+  padding: 8px 14px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.result-item:hover {
+  background: rgba(0,0,0,0.06);
+}
+
+.loading {
+  font-size: 13px;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/*END BUSCADOR */
 /* TOOLGRID */
 .tool-card {
   padding: 20px;
@@ -1091,4 +1199,89 @@
 .btn-outline-danger:hover {
   background: #dc3545;
   color: white;
+}
+
+.buscador-container{
+  width: 700px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+.search-input01{
+  width: 70%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid #53c39b;
+  outline: none;
+  transition: 0.3s;
+}
+
+.search-input01:focus{
+  border-color: #1fa87d;
+  box-shadow: 0 0 5px rgba(31,168,125,.5);
+}
+
+.tabla-alimentos{
+  margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow:hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,.1);
+}
+
+.tabla-alimentos th{
+  background: #1fa87d;
+  color:#fff;
+  padding: 12px;
+  font-size: 15px;
+}
+
+.tabla-alimentos td{
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.tabla-alimentos tr:hover{
+  background: #f5fff9;
+}
+.loading{
+  margin-top: 10px;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.btn-detalles, .btn-seleccionar {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.btn-detalles {
+  background: #4da3ff;
+  color: white;
+}
+
+.btn-detalles:hover {
+  background: #1b7eea;
+}
+
+.btn-seleccionar {
+  background: #4caf50;
+  color: white;
+}
+
+.btn-seleccionar:hover {
+  background: #3e8e41;
+}
+.header-title-bus{
+  color: aliceblue;
+  
 }
