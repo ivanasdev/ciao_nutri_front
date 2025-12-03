@@ -59,7 +59,7 @@ const LoginNutriologo = () => {
   return (
     <div className="login-wrapper">
       <div className="login-card">
-        <h3 className="login-title">Login Nutri&oacute;logo</h3>
+        <h3 className="login-title">Iniciar sesi&oacute;n</h3>
 
         <form onSubmit={handleLogin}>
           <div className="mb-3">

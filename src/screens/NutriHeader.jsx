@@ -15,13 +15,17 @@ function NutriHeaderMain({ user }) {
   const [showMisPacientes, setShowMisPacientes] = useState(false);
   return (
 
-    <div className="header-container">
+    <div className="hc_01">
       <div className="header-content">
-        <h4 className="header-title">{user.st_username}</h4>
-
-        <div className="header-buttons">
-          <img src={img1} className="img-headerTop" />
+         <img src={img1} className="img-headerTop" />
           <img src={img2} className="img-headerTop" />
+           <img src={img2} className="img-headerTop" />
+          
+     
+        <div className="header-buttons">
+            <h4 className="header-title">{user.st_username}</h4>
+            <h4 className="header-title">Invitar colega</h4>
+
         </div>
       </div>
 

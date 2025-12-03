@@ -12,7 +12,7 @@ const HomePage = () => {
           <h1 className="title">CIAO... NUTRI!</h1>
 
           <p className="subtitle">
-            El software diseñado para nutriólogos que desean optimizar sus consultas,
+            El software diseñado para especficamente para nutriólogos que desean optimizar sus consultas,
             organizar su agenda y brindar planes nutricionales efectivos.
           </p>
 

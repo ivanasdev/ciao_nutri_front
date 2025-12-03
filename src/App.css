@@ -13,20 +13,18 @@
 
 /*Dashboard*/
 .dashboard-container {
-  min-height: 100vh;
 
   font-family:'Courier New', Courier, monospace
 }
 .main-content {
   flex: 1;
-  padding: 27px;
+  padding: 18px;
 }
 
 
 /*Header Container*/
 .header-container {
   width: 100%;
-  margin-top: 55px;
   margin-bottom: 27px;
   border-radius: 36px;
   padding: 12px 24px;
@@ -35,14 +33,14 @@
   box-shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
 
-.header-content {
-  background: rgba(207, 222, 208, 0.263);
+.hc_01 {
+  background: rgba(1, 176, 158, 0.495);
   backdrop-filter: blur(10px);
   padding: 1.2rem 1.5rem;
   border-radius: 15px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
   display: flex;
-  justify-content: space-between;
+
   align-items: center;
 }
 
@@ -54,13 +52,7 @@
   color: #222;
 }
 
-.img-headerTop{
-  height: 50px;
-  width: 50px;
-  background-color: #9e3434ae;
-  margin: 9px;
-  border-radius: 9px;
-}
+
 
 /* END HEADER */
 
@@ -992,7 +984,7 @@
   display: block;
   width: 100%;
   padding: 12px;
-  background-color: #4CAF50;
+  background-color: #4caf4f58;
   color: white;
   font-size: 1rem;
   font-weight: bold;
