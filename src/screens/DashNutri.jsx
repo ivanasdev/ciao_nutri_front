@@ -3,7 +3,10 @@
  */
 
 import React, { useState } from "react";
-
+import ToolsGrid from "./ToolsHome";
+import CrearPacienteModal from "./NewPatient";
+import MisPacientesModal from "./MyPatients";
+import CrearCitaModal from "../modals/crearCitaModal";
 //import { Navigate, useNavigate } from "react-router-dom";
 
 import { useUser } from "../context/userContesxt";
@@ -15,32 +18,42 @@ import SidebarPopup from "./SidePop";
 
 import NutriHeaderMain from "./NutriHeader";
 
-
 const DashboardNutriologo = () => {
   const { user, logout } = useUser();
+  const [showCrear, setShowCrear] = useState(false);
+  const [showMisPacientes, setShowMisPacientes] = useState(false);
+  const [showCrearCita, setShowCrearCita] = useState(false);
   //const navigate = useNavigate();
 
   return (
     <>
-    <div className="dashboard-container">
-
-      {/* Sidebar */}
+      <div className="dashboard-container">
+        {/* Sidebar 
       <SidebarPopup logout={logout} />
+      */}
 
-      {/* Main content */}
-      <main className="main-content">
-      <NutriHeaderMain user={user} onLogout={logout} />
+        {/* Main content */}
+        <main className="main-content">
+          <NutriHeaderMain user={user} onLogout={logout} />
 
-        {/* Información */}
-        <InfoNutriologoModal user={user} />
-
-        {/* GRID de herramientas */}
-   
-       
-      </main>
-     
-    </div>
-   
+          <ToolsGrid
+            setShowCrear={setShowCrear}
+            setShowMisPacientes={setShowMisPacientes}
+            setShowCrearCita={setShowCrearCita}
+          />
+          <CrearPacienteModal
+            open={showCrear}
+            setOpen={setShowCrear}
+            idNutriologo={user.id_nutriologo}
+          />
+          <MisPacientesModal
+            open={showMisPacientes}
+            setOpen={setShowMisPacientes}
+            idNutriologo={user.id_nutriologo}
+          />
+          <CrearCitaModal open={showCrearCita} setOpen={setShowCrearCita} />
+        </main>
+      </div>
     </>
   );
 };

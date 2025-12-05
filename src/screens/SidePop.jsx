@@ -20,18 +20,32 @@ const SidebarPopup = ({ logout }) => {
         <h3 className="sidebar-title">Mis datos</h3>
 
         <ul className="sidebar-menu">
+
           <li onClick={() => navigate("/")}>
-            <span>Notificaciones</span> 
+            <span>Inicio</span> 
           </li>
           <li onClick={() => navigate("/pacientes")}>
-            <span> Metricas </span>
+            <span> Perfil </span>
           </li>
           <li onClick={() => navigate("/citas")}>
-            <span> Citas
- </span>          </li>
-          <li onClick={() => navigate("/plan-alimentos")}>
-            <span> Planes </span>
+            <span> Mis pacientes </span> 
           </li>
+          <li onClick={() => navigate("/citas")}>
+            <span> Retos </span> 
+          </li>
+          <li onClick={() => navigate("/plan-alimentos")}>
+            <span> Recetarios </span>
+          </li>
+          <li onClick={() => navigate("/plan-alimentos")}>
+            <span> Agenda </span>
+          </li>
+           <li onClick={() => navigate("/plan-alimentos")}>
+            <span> Soporte </span>
+          </li>
+          <li onClick={() => navigate("/plan-alimentos")}>
+            <span> Configuraci&oacute;n </span>
+          </li>
+ 
       
         </ul>
 

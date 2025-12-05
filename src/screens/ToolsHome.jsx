@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import img1 from "../assets/icons/cliente.png";
+import img2 from "../assets/icons/notebook.png";
+import img3 from "../assets/icons/nplan.png";
+import img4 from "../assets/icons/frying-pan.png";
+import img5 from "../assets/icons/metri.png";
+import img6 from "../assets/icons/ch.png";
 
 const ToolsGrid = ({ setShowCrear, setShowMisPacientes, setShowCrearCita }) => {
   const [openMenu, setOpenMenu] = useState(null);
@@ -16,36 +22,64 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes, setShowCrearCita }) => {
       <div className="grid-tools">
         {/* --- PACIENTES --- */}
         <div className="tool-card" onClick={() => toggleMenu("pacientes")}>
-          <h5>📋 Pacientes</h5>
-          <p>Consultar listado, historial y progreso</p>
+          <h5 className="header-title">Pacientes</h5>
+          <img className="imgmenu" src={img1} />
         </div>
 
         {openMenu === "pacientes" && (
           <div className="submenu-card">
-            <p onClick={() => setShowCrear(true)}>➕ Crear paciente</p>
-            <p onClick={() => setShowMisPacientes(true)}>📄 Mis pacientes</p>
-            <p>🥗 Plan por paciente</p>
+            <p onClick={() => setShowCrear(true)}>Crear paciente</p>
+            <p onClick={() => setShowMisPacientes(true)}>Mis pacientes</p>
+            <p>Plan por paciente</p>
           </div>
         )}
 
         {/* --- CITAS --- */}
         <div className="tool-card" onClick={() => toggleMenu("citas")}>
-          <h5>📅 Citas</h5>
-          <p>Agendar y administrar consultas</p>
+          <h5 className="header-title">Agenda</h5>
+          <img className="imgmenu" src={img2} />
         </div>
 
         {openMenu === "citas" && (
           <div className="submenu-card">
-            <p onClick={() => setShowCrearCita(true)}>➕ Crear cita</p>
-            <p>📅 Ver mis citas</p>
-            <p>✔ Confirmaciones</p>
+            <p onClick={() => setShowCrearCita(true)}>Crear cita</p>
+            <p>Ver mis citas</p>
+            <p>Confirmaciones</p>
+          </div>
+        )}
+
+        {/* --- Retos --- */}
+        <div className="tool-card" onClick={() => toggleMenu("mensajes")}>
+          <h5 className="header-title">Retos</h5>
+          <img className="imgmenu" src={img6} />
+        </div>
+
+        {openMenu === "mensajes" && (
+          <div className="submenu-card">
+            <p>Bandeja de entrada</p>
+            <p>Nuevo mensaje</p>
           </div>
         )}
 
         {/* --- PLANES --- */}
         <div className="tool-card" onClick={() => toggleMenu("planes")}>
-          <h5>🥗 Planes</h5>
-          <p>Crear y editar planes personalizados</p>
+          <h5 className="header-title">Planes</h5>
+          <img className="imgmenu" src={img3} />
+        </div>
+
+        {openMenu === "planes" && (
+          <div className="submenu-card">
+            <p onClick={() => navigate("/ciao_planner")}>📄 Ciao Planner</p>
+
+            <p>Crear plan</p>
+            <p>Mis planes</p>
+          </div>
+        )}
+
+        {/* --- PLANES --- */}
+        <div className="tool-card" onClick={() => toggleMenu("planes")}>
+          <h5 className="header-title">Recetarios</h5>
+          <img className="imgmenu" src={img4} />
         </div>
 
         {openMenu === "planes" && (
@@ -59,8 +93,8 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes, setShowCrearCita }) => {
 
         {/* --- MÉTRICAS --- */}
         <div className="tool-card" onClick={() => toggleMenu("metricas")}>
-          <h5>📊 Métricas</h5>
-          <p>Revisar gráficos, IMC, estadísticas</p>
+          <h5 className="header-title">Metricas</h5>
+          <img className="imgmenu" src={img5} />
         </div>
 
         {openMenu === "metricas" && (
@@ -72,34 +106,8 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes, setShowCrearCita }) => {
 
         {/* --- MENSAJES --- */}
         <div className="tool-card" onClick={() => toggleMenu("mensajes")}>
-          <h5>💬 Mensajes</h5>
-          <p>Comunicación con pacientes</p>
-        </div>
-
-        {openMenu === "mensajes" && (
-          <div className="submenu-card">
-            <p>✉ Bandeja de entrada</p>
-            <p>📝 Nuevo mensaje</p>
-          </div>
-        )}
-
-        {/* --- MENSAJES --- */}
-        <div className="tool-card" onClick={() => toggleMenu("mensajes")}>
-          <h5>Consulta Remota</h5>
-          <p>Co</p>
-        </div>
-
-        {openMenu === "mensajes" && (
-          <div className="submenu-card">
-            <p>Generar formulario</p>
-            <p>Ver formularios</p>
-          </div>
-        )}
-
-        {/* --- MENSAJES --- */}
-        <div className="tool-card" onClick={() => toggleMenu("mensajes")}>
-          <h5>💬 Mensajes</h5>
-          <p>Comunicación con pacientes</p>
+          <h5 className="header-title">Mensajes</h5>
+          <img className="imgmenu" src={img6} />
         </div>
 
         {openMenu === "mensajes" && (

@@ -19,6 +19,7 @@ import "./App.css"
 import CiaoPlannerTools from "./screens/CiaoPlannerT";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BuscadorAlimentos from "./forms/BuscadorHome";
+import PacientesDashboard from "./screens/PacientesMain";
 
 
 function AppContent() {
@@ -55,6 +56,11 @@ function AppContent() {
         <Route
           path="/buscador_name"
           element={isLogged ? <BuscadorAlimentos /> : <Navigate to="/" />}
+        />
+
+        <Route
+          path="/pacientes_dash"
+          element={isLogged ? <PacientesDashboard /> : <Navigate to="/" />}
         />
 
         <Route
