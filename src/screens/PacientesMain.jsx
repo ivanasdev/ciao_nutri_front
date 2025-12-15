@@ -2,14 +2,18 @@ import { useState } from "react";
 import CrearPacienteModal from "./NewPatient";
 import MisPacientesModal from "./MyPatients";
 import CrearCitaModal from "../modals/crearCitaModal";
+import NutriHeaderMain from "./NutriHeader";
+import { useUser } from "../context/userContesxt";
 
-function PacientesDashboard({ user }) {
+function PacientesDashboard() {
+   const { user, logout } = useUser();
   const [showCrear, setShowCrear] = useState(false);
   const [showMisPacientes, setShowMisPacientes] = useState(false);
   const [showCrearCita, setShowCrearCita] = useState(false);
 
   return (
     <div className="dashboard-container">
+      <NutriHeaderMain/>
 
       {/* Tarjetas del menú */}
       <div className="dashboard-menu">
@@ -24,9 +28,10 @@ function PacientesDashboard({ user }) {
           <p>Registrar uno nuevo en el sistema</p>
         </div>
 
-        <div className="dash-card" onClick={() => setShowCrearCita(true)}>
+        <div className="dash-card"
+         onClick={() => setShowCrearCita(true)}>
           <h3>📅 Citas</h3>
-          <p>Ver o crear citas de seguimiento</p>
+          <p>Ver o crear citas de seguimientos</p>
         </div>
 
       </div>
@@ -35,6 +40,9 @@ function PacientesDashboard({ user }) {
       <MisPacientesModal 
         open={showMisPacientes} 
         setOpen={setShowMisPacientes} 
+
+            idNutriologo={user.id_nutriologo}
+        
     
       />
 

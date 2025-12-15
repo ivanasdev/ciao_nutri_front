@@ -17,6 +17,7 @@ import InfoNutriologoModal from "./Nutri_Info";
 import SidebarPopup from "./SidePop";
 
 import NutriHeaderMain from "./NutriHeader";
+import ProgressDashboard from "./MetricsHome";
 
 const DashboardNutriologo = () => {
   const { user, logout } = useUser();
@@ -36,22 +37,34 @@ const DashboardNutriologo = () => {
         <main className="main-content">
           <NutriHeaderMain user={user} onLogout={logout} />
 
+       
+
           <ToolsGrid
             setShowCrear={setShowCrear}
             setShowMisPacientes={setShowMisPacientes}
             setShowCrearCita={setShowCrearCita}
           />
+
+             <ProgressDashboard/>
+
+
+          {/*MODALES*/}
+          
           <CrearPacienteModal
             open={showCrear}
             setOpen={setShowCrear}
             idNutriologo={user.id_nutriologo}
           />
+
           <MisPacientesModal
             open={showMisPacientes}
             setOpen={setShowMisPacientes}
             idNutriologo={user.id_nutriologo}
           />
+
           <CrearCitaModal open={showCrearCita} setOpen={setShowCrearCita} />
+        
+        
         </main>
       </div>
     </>

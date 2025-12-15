@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import BotonVerExpediente from "../layouts/botonExp";
 import ModalVerExpediente from "../modals/ExpModal";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/userContesxt";
 
 const PacientesTable = ({ pacientes }) => {
+    const { user } = useUser();
   const [openPacienteId, setOpenPacienteId] = useState(null); // id del paciente cuyo modal está abierto
   const navigate = useNavigate();
 
@@ -54,7 +56,7 @@ const PacientesTable = ({ pacientes }) => {
         />
       )}
     </div>
-                // dentro del ModalVerExpediente, donde quieras mostrar el progreso
+               
 
 </>
   );

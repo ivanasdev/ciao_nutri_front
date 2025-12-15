@@ -30,7 +30,9 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes, setShowCrearCita }) => {
           <div className="submenu-card">
             <p onClick={() => setShowCrear(true)}>Crear paciente</p>
             <p onClick={() => setShowMisPacientes(true)}>Mis pacientes</p>
-            <p>Plan por paciente</p>
+          <p onClick={() => navigate("/pacientes_dash")}>
+      Menú pacientes
+    </p>
           </div>
         )}
 
