@@ -1,62 +1,85 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import CrearPacienteModal from "./NewPatient";
-import MisPacientesModal from "./MyPatients";
 import CrearCitaModal from "../modals/crearCitaModal";
 import NutriHeaderMain from "./NutriHeader";
 import { useUser } from "../context/userContesxt";
+import TBPac from "../tables/TBPacientes";
+import axios from "axios";
+
 
 function PacientesDashboard() {
-   const { user, logout } = useUser();
+  const { user } = useUser();
+
+  const [pacientes, setPacientes] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const [showCrear, setShowCrear] = useState(false);
-  const [showMisPacientes, setShowMisPacientes] = useState(false);
   const [showCrearCita, setShowCrearCita] = useState(false);
+
+    useEffect(() => {
+    if (user?.id && user?.bearer_token) {
+      cargarPacientes();
+    }
+  }, [user]);
+
+  const cargarPacientes = async () => {
+    try {
+      setLoading(true);
+
+      console.log("Soy pacientes menu")
+
+      const URI = import.meta.env.VITE_GET_PATI_BID;
+
+      const resp = await axios.post(
+        URI,
+        { id_nutriologo: user.id },
+        {
+          headers: {
+            Authorization: `Bearer ${user.bearer_token}`,
+          },
+        }
+      );
+
+      setPacientes(resp.data.data || []);
+    } catch (error) {
+      console.error("Error cargando pacientes:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
 
   return (
     <div className="dashboard-container">
-      <NutriHeaderMain/>
+      <NutriHeaderMain />
 
-      {/* Tarjetas del menú */}
       <div className="dashboard-menu">
-
-        <div className="dash-card" onClick={() => setShowMisPacientes(true)}>
-          <h3>📋 Ver pacientes</h3>
-          <p>Lista completa de pacientes registrados</p>
-        </div>
-
         <div className="dash-card" onClick={() => setShowCrear(true)}>
           <h3>➕ Nuevo paciente</h3>
-          <p>Registrar uno nuevo en el sistema</p>
         </div>
 
-        <div className="dash-card"
-         onClick={() => setShowCrearCita(true)}>
+        <div className="dash-card" onClick={() => setShowCrearCita(true)}>
           <h3>📅 Citas</h3>
-          <p>Ver o crear citas de seguimientos</p>
         </div>
-
       </div>
 
-      {/* MODALES */}
-      <MisPacientesModal 
-        open={showMisPacientes} 
-        setOpen={setShowMisPacientes} 
+      {loading ? (
+        <p>Cargando pacientes...</p>
+      ) : (
+        <TBPac pacientes={pacientes} />
+      )}
 
-            idNutriologo={user.id_nutriologo}
-        
-    
-      />
-
-      <CrearPacienteModal 
+      <CrearPacienteModal
         open={showCrear}
         setOpen={setShowCrear}
-     
+        onSuccess={cargarPacientes}
       />
 
-      <CrearCitaModal 
-        open={showCrearCita} 
-        setOpen={setShowCrearCita} 
+      <CrearCitaModal
+        open={showCrearCita}
+        setOpen={setShowCrearCita}
       />
-
     </div>
   );
 }

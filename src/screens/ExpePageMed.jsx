@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useUser } from "../context/userContesxt";
 import { useParams, useNavigate } from "react-router-dom";
+import NutriHeaderMain from "./NutriHeader";
 
 const ExpedientePage = () => {
   const { user } = useUser();
@@ -46,94 +47,97 @@ const ExpedientePage = () => {
       // Aquí puedes llamar a tu API para guardar el cambio
     }
   };
-
+ 
   return (
-    <div className="expediente-page">
-      <button className="btn-volver" onClick={() => navigate(-1)}>← Volver</button>
+    <>
+     <div className="dashboard-container">
+        <NutriHeaderMain/>
+    <div className="">
+ 
 
-      <h2 className="titulo-expediente">Expediente del Paciente</h2>
+      <h2 className="titulo-expediente">Expediente de {`${expediente.st_Nombre} ${expediente.st_ApellidoP}`} </h2>
 
       {/* Tabla con los datos del paciente */}
       <table className="tabla-expediente">
         <tbody>
           <tr>
-            <th>Campo</th>
+            <th></th>
             <th>Valor</th>
             <th>Editar</th>
           </tr>
           <tr>
-            <td>Nombre</td>
+       
             <td>{`${expediente.st_Nombre} ${expediente.st_ApellidoP} ${expediente.st_ApellidoM}`}</td>
             <td>
               <button onClick={() => handleEditar("Nombre", `${expediente.st_Nombre} ${expediente.st_ApellidoP} ${expediente.st_ApellidoM}`)}>✏️</button>
             </td>
           </tr>
           <tr>
-            <td>Email</td>
+   
             <td>{expediente.st_Email}</td>
             <td>
               <button onClick={() => handleEditar("Email", expediente.st_Email)}>✏️</button>
             </td>
           </tr>
           <tr>
-            <td>Celular</td>
+         
             <td>{expediente.st_Celular}</td>
             <td>
               <button onClick={() => handleEditar("Celular", expediente.st_Celular)}>✏️</button>
             </td>
           </tr>
           <tr>
-            <td>Sexo</td>
+           
             <td>{expediente.st_Sexo || "No especificado"}</td>
             <td>
               <button onClick={() => handleEditar("Sexo", expediente.st_Sexo)}>✏️</button>
             </td>
           </tr>
           <tr>
-            <td>Fecha de nacimiento</td>
+        
             <td>{expediente.dt_FechaNacimiento}</td>
             <td>
               <button onClick={() => handleEditar("Fecha de nacimiento", expediente.dt_FechaNacimiento)}>✏️</button>
             </td>
           </tr>
           <tr>
-            <td>Peso</td>
+          
             <td>{expediente.f_Peso} kg</td>
             <td>
               <button onClick={() => handleEditar("Peso", expediente.f_Peso)}>✏️</button>
             </td>
           </tr>
           <tr>
-            <td>Talla</td>
+       
             <td>{expediente.f_Talla} cm</td>
             <td>
               <button onClick={() => handleEditar("Talla", expediente.f_Talla)}>✏️</button>
             </td>
           </tr>
           <tr>
-            <td>IMC</td>
+      
             <td>{expediente.f_IMC}</td>
             <td>
               <button onClick={() => handleEditar("IMC", expediente.f_IMC)}>✏️</button>
             </td>
           </tr>
           <tr>
-            <td>Clasificación IMC</td>
+           
             <td>{expediente.st_IMC_clas}</td>
             <td>
               <button onClick={() => handleEditar("Clasificación IMC", expediente.st_IMC_clas)}>✏️</button>
             </td>
           </tr>
           <tr>
-            <td>Observaciones</td>
+   
             <td>{expediente.st_Observaciones}</td>
             <td>
               <button onClick={() => handleEditar("Observaciones", expediente.st_Observaciones)}>✏️</button>
             </td>
           </tr>
           <tr>
-            <td>Status Registro</td>
-            <td>{expediente.paso1_status}</td>
+
+            <td>Statuts:{expediente.paso1_status}</td>
             <td>
               <button onClick={() => handleEditar("Status Registro", expediente.paso1_status)}>✏️</button>
             </td>
@@ -169,6 +173,11 @@ const ExpedientePage = () => {
         ))}
       </div>
     </div>
+          <button className="btn-volver" onClick={() => navigate(-1)}>← Volver</button>
+
+    </div>
+    </>
+    
   );
 };
 

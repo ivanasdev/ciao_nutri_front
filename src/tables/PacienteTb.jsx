@@ -5,9 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/userContesxt";
 
 const PacientesTable = ({ pacientes }) => {
-    const { user } = useUser();
+  const { user } = useUser();
   const [openPacienteId, setOpenPacienteId] = useState(null); // id del paciente cuyo modal está abierto
   const navigate = useNavigate();
+  console.log("USER TB PACIENTE")
+  console.log(user)
 
   if (!pacientes || pacientes.length === 0) {
     return <p>No tienes pacientes registrados.</p>;
@@ -15,50 +17,52 @@ const PacientesTable = ({ pacientes }) => {
 
   return (
     <>
-    <div className="tabla-wrapper">
-      <table className="tabla-pacientes">
-        <thead>
-          <tr>
-            <th>Paciente</th>
-            <th>Email</th>
-            <th>IMC</th>
-            <th>Clasificación</th>
-            <th></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {pacientes.map((p) => (
-            <tr key={p.id_paciente}>
-              <td><strong>{p.st_Nombre} {p.st_ApellidoP}</strong></td>
-              <td>{p.st_Email}</td>
-              <td>{p.f_IMC}</td>
-              <td>{p.st_IMC_clas}</td>
-              <td>
-                <button
-                  className="btn-ver-expediente"
-                    onClick={() => navigate(`/expediente/${p.id_paciente}`)}
-                >
-                  Ver expediente
-                </button>
-              </td>
+      <div className="tabla-wrapper">
+        <table className="tabla-pacientes">
+          <thead>
+            <tr>
+              <th>Paciente</th>
+              <th>Email</th>
+              <th>IMC</th>
+              <th>Clasificación</th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
 
-      {/* Solo un modal abierto a la vez */}
-      {openPacienteId && (
-        <ModalVerExpediente
-          open={true}
-          setOpen={() => setOpenPacienteId(null)}
-          idPaciente={openPacienteId}
-        />
-      )}
-    </div>
-               
+          <tbody>
+            {pacientes.map((p) => (
+              <tr key={p.id_paciente}>
+                <td>
+                  <strong>
+                    {p.st_Nombre} {p.st_ApellidoP}
+                  </strong>
+                </td>
+                <td>{p.st_Email}</td>
+                <td>{p.f_IMC}</td>
+                <td>{p.st_IMC_clas}</td>
+                <td>
+                  <button
+                    className="btn-ver-expediente"
+                    onClick={() => navigate(`/expediente/${p.id_paciente}`)}
+                  >
+                    Ver expediente
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-</>
+        {/* Solo un modal abierto a la vez */}
+        {openPacienteId && (
+          <ModalVerExpediente
+            open={true}
+            setOpen={() => setOpenPacienteId(null)}
+            idPaciente={openPacienteId}
+          />
+        )}
+      </div>
+    </>
   );
 };
 

@@ -1,0 +1,140 @@
+/* CONTENEDOR GENERAL */
+.expediente-wrapper {
+  padding: 2rem;
+  background: #f4f6f9;
+  min-height: 100vh;
+}
+
+/* BOTÓN VOLVER */
+.btn-volver {
+  background: transparent;
+  border: none;
+  font-size: 15px;
+  color: #2563eb;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.btn-volver:hover {
+  text-decoration: underline;
+}
+
+/* TARJETA PRINCIPAL */
+.expediente-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* TÍTULOS */
+.titulo-expediente {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #111827;
+}
+
+.subtitulo-expediente {
+  margin-top: 2rem;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* TABLA */
+.tabla-expediente {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.tabla-expediente th {
+  background: #f1f5f9;
+  text-align: left;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.tabla-expediente td {
+  padding: 10px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.tabla-expediente tr:hover {
+  background: #f9fafb;
+}
+
+/* BOTÓN EDITAR */
+.tabla-expediente button {
+  background: #e0e7ff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.tabla-expediente button:hover {
+  background: #c7d2fe;
+}
+
+/* ACCIONES */
+.acciones-expediente {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.accion-btn {
+  background: #111827;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.accion-btn:hover {
+  background: #1f2937;
+}
+
+/* PROGRESO */
+.progreso-pasos {
+  display: flex;
+  gap: 12px;
+  margin-top: 1rem;
+}
+
+.paso-indicador {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.paso-indicador.completo {
+  background: #22c55e;
+  color: white;
+}
+
+.paso-indicador.pendiente {
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .expediente-card {
+    padding: 1rem;
+  }
+
+  .tabla-expediente th,
+  .tabla-expediente td {
+    font-size: 13px;
+  }
+}
