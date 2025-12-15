@@ -5,8 +5,7 @@ import PacientesTable from "../tables/PacienteTb";
 
 const MisPacientesModal = ({ open, setOpen, idNutriologo }) => {
   const { user } = useUser();
-  console.log("INFO DEL USER EN LOCALSTORAGE")
-  console.log(user.id_nutriologo)
+
   const [pacientes, setPacientes] = useState([]);
   const [loading, setLoading] = useState(true);
 
