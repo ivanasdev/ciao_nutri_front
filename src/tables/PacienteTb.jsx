@@ -1,68 +1,41 @@
-import React, { useState } from "react";
-import BotonVerExpediente from "../layouts/botonExp";
-import ModalVerExpediente from "../modals/ExpModal";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../context/userContesxt";
 
 const PacientesTable = ({ pacientes }) => {
-  const { user } = useUser();
-  const [openPacienteId, setOpenPacienteId] = useState(null); // id del paciente cuyo modal está abierto
   const navigate = useNavigate();
-  console.log("USER TB PACIENTE")
-  console.log(user)
 
   if (!pacientes || pacientes.length === 0) {
     return <p>No tienes pacientes registrados.</p>;
   }
 
   return (
-    <>
-      <div className="tabla-wrapper">
-        <table className="tabla-pacientes">
-          <thead>
-            <tr>
-              <th>Paciente</th>
-              <th>Email</th>
-              <th>IMC</th>
-              <th>Clasificación</th>
-              <th></th>
-            </tr>
-          </thead>
+    <div className="tabla-wrapper">
+      {pacientes.map(p => (
+        <div className="paciente-card" key={p.id_paciente}>
+          
+          <div className="paciente-avatar">
+            {p.st_Nombre?.[0]}
+          </div>
 
-          <tbody>
-            {pacientes.map((p) => (
-              <tr key={p.id_paciente}>
-                <td>
-                  <strong>
-                    {p.st_Nombre} {p.st_ApellidoP}
-                  </strong>
-                </td>
-                <td>{p.st_Email}</td>
-                <td>{p.f_IMC}</td>
-                <td>{p.st_IMC_clas}</td>
-                <td>
-                  <button
-                    className="btn-ver-expediente"
-                    onClick={() => navigate(`/expediente/${p.id_paciente}`)}
-                  >
-                    Ver expediente
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          <div className="paciente-info">
+            <h4>{p.st_Nombre} {p.st_ApellidoP}</h4>
+            <p>{p.st_Email}</p>
 
-        {/* Solo un modal abierto a la vez */}
-        {openPacienteId && (
-          <ModalVerExpediente
-            open={true}
-            setOpen={() => setOpenPacienteId(null)}
-            idPaciente={openPacienteId}
-          />
-        )}
-      </div>
-    </>
+            <span className="badge-imc">
+              IMC {p.f_IMC} · {p.st_IMC_clas}
+            </span>
+
+            <button
+              className="btn-ver-expediente"
+              onClick={() => navigate(`/expediente/${p.id_paciente}`)}
+            >
+              Ver expediente
+            </button>
+          </div>
+
+        </div>
+      ))}
+    </div>
   );
 };
 

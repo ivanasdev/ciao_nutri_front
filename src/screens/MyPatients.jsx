@@ -11,6 +11,7 @@ const MisPacientesModal = ({ open, setOpen, idNutriologo }) => {
 
   const cargarPacientes = async () => {
     try {
+      //URL
       const URI = import.meta.env.VITE_GET_PATI_BID;
 
       const resp = await axios.post(
@@ -42,7 +43,7 @@ const MisPacientesModal = ({ open, setOpen, idNutriologo }) => {
 
   return (
     <div className="modal-overlay" onClick={() => setOpen(false)}>
-      <div className="crear-modal" onClick={(e) => e.stopPropagation()}>
+      <div className="modalMisPac" onClick={(e) => e.stopPropagation()}>
         <button className="close-modal-btn" onClick={() => setOpen(false)}>
           ✕
         </button>

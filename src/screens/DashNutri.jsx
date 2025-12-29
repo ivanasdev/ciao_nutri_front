@@ -34,22 +34,18 @@ const DashboardNutriologo = () => {
       */}
 
         {/* Main content */}
+        <NutriHeaderMain user={user} onLogout={logout} />
         <main className="main-content">
-          <NutriHeaderMain user={user} onLogout={logout} />
-
-       
-
           <ToolsGrid
             setShowCrear={setShowCrear}
             setShowMisPacientes={setShowMisPacientes}
             setShowCrearCita={setShowCrearCita}
           />
 
-             <ProgressDashboard/>
-
+          <ProgressDashboard />
 
           {/*MODALES*/}
-          
+
           <CrearPacienteModal
             open={showCrear}
             setOpen={setShowCrear}
@@ -63,8 +59,6 @@ const DashboardNutriologo = () => {
           />
 
           <CrearCitaModal open={showCrearCita} setOpen={setShowCrearCita} />
-        
-        
         </main>
       </div>
     </>

@@ -20,6 +20,7 @@ import CiaoPlannerTools from "./screens/CiaoPlannerT";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BuscadorAlimentos from "./forms/BuscadorHome";
 import PacientesDashboard from "./screens/PacientesMain";
+import NutriPlansPromo from "./screens/ServicesHome";
 
 
 function AppContent() {
@@ -71,6 +72,10 @@ function AppContent() {
         <Route
           path="/patient"
           element={isLogged ? <FormHistorialClinico /> : <Navigate to="/" />}
+        />
+         <Route
+          path="/nutriplans"
+          element={<NutriPlansPromo />}
         />
 
         <Route

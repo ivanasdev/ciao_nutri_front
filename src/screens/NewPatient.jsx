@@ -118,10 +118,11 @@ useEffect(() => {
           </svg>
         </button>
 
-       <h3>Crear nuevo paciente</h3>
+
 
 <div className="form-section">
-  <h6 className="section-title">Datos personales</h6>
+         <h5 className="section-title">NUEVO PACIENTE</h5>
+  <h6 className="section-title">- Datos personales -</h6>
   <div className="form-grid">
     <input type="text" name="st_Nombre" placeholder="Nombre" onChange={handleChange} />
     <input type="text" name="st_ApellidoP" placeholder="Apellido Paterno" onChange={handleChange} />

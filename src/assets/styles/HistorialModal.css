@@ -1,0 +1,128 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.crear-modal {
+  background: #f7f1dfd7;
+  color: #000000;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #000000;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.f-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-section {
+ 
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+input,
+textarea {
+  background: #bae2c1;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 10px;
+  color: #000000;
+  font-size: 15px;
+}
+
+textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.btn-save {
+  margin-top: 10px;
+  background: #eb259f;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  color: rgb(0, 0, 0);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-save:hover {
+  background: #d81dd2;
+}
+.sleep-range {
+  width: 100%;
+  margin-top: 8px;
+  cursor: pointer;
+  accent-color: #03d3e6be; /* moderno */
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+.form-field label input {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.sustancia-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.sustancia-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 120px;
+  cursor: pointer;
+}
+.frecuencia-input {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: inherit;
+}
+

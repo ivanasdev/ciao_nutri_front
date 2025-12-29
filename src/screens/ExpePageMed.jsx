@@ -3,11 +3,14 @@ import axios from "axios";
 import { useUser } from "../context/userContesxt";
 import { useParams, useNavigate } from "react-router-dom";
 import NutriHeaderMain from "./NutriHeader";
+import HistorialClinicoModal from "../modals/HistClinModal";
 
 const ExpedientePage = () => {
   const { user } = useUser();
-  const { idPaciente } = useParams(); // recibe id del paciente desde la URL
+  const { idPaciente } = useParams();
   const navigate = useNavigate();
+  const [openHistorial, setOpenHistorial] = useState(false);
+
   const [expediente, setExpediente] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -40,143 +43,162 @@ const ExpedientePage = () => {
   if (loading) return <p>Cargando expediente...</p>;
   if (!expediente) return <p>No se encontró información del paciente.</p>;
 
-  const handleEditar = (campo, valorActual) => {
-    const nuevoValor = prompt(`Editar ${campo}:`, valorActual);
-    if (nuevoValor !== null) {
-      alert(`Nuevo valor de ${campo}: ${nuevoValor}`);
-      // Aquí puedes llamar a tu API para guardar el cambio
+  const renderAccionPrincipal = () => {
+    switch (expediente.paso1_status) {
+      case 1:
+        return (
+          <button
+            className="btn-accion-principal"
+            onClick={() => setOpenHistorial(true)}
+          >
+            🩺 Historial clínicos
+          </button>
+        );
+      case 2:
+        return (
+          <button
+            className="btn-accion-principal"
+            onClick={() =>
+              navigate(`/expediente/${idPaciente}/plan-nutricional`)
+            }
+          >
+            📝 Crear plan
+          </button>
+        );
+      case 3:
+        return (
+          <button
+            className="btn-accion-principal"
+            onClick={() => navigate(`/expediente/${idPaciente}/seguimiento`)}
+          >
+            📈 Seguimiento
+          </button>
+        );
+      case 4:
+        return (
+          <button
+            className="btn-accion-principal"
+            onClick={() => navigate(`/expediente/${idPaciente}/evaluacion`)}
+          >
+            ✅ Evaluación
+          </button>
+        );
+      default:
+        return (
+          <button className="btn-accion-principal disabled" disabled>
+            ✔ Expediente completo
+          </button>
+        );
     }
   };
- 
+
   return (
-    <>
-     <div className="dashboard-container">
-        <NutriHeaderMain/>
-    <div className="">
- 
+    <div className="dashboard-container">
+      <NutriHeaderMain />
 
-      <h2 className="titulo-expediente">Expediente de {`${expediente.st_Nombre} ${expediente.st_ApellidoP}`} </h2>
+      {/* HEADER PACIENTE */}
+      <div className="expediente-header">
+        <div className="exp-avatar">{expediente.st_Nombre?.[0]}</div>
 
-      {/* Tabla con los datos del paciente */}
-      <table className="tabla-expediente">
-        <tbody>
-          <tr>
-            <th></th>
-            <th>Valor</th>
-            <th>Editar</th>
-          </tr>
-          <tr>
-       
-            <td>{`${expediente.st_Nombre} ${expediente.st_ApellidoP} ${expediente.st_ApellidoM}`}</td>
-            <td>
-              <button onClick={() => handleEditar("Nombre", `${expediente.st_Nombre} ${expediente.st_ApellidoP} ${expediente.st_ApellidoM}`)}>✏️</button>
-            </td>
-          </tr>
-          <tr>
-   
-            <td>{expediente.st_Email}</td>
-            <td>
-              <button onClick={() => handleEditar("Email", expediente.st_Email)}>✏️</button>
-            </td>
-          </tr>
-          <tr>
-         
-            <td>{expediente.st_Celular}</td>
-            <td>
-              <button onClick={() => handleEditar("Celular", expediente.st_Celular)}>✏️</button>
-            </td>
-          </tr>
-          <tr>
-           
-            <td>{expediente.st_Sexo || "No especificado"}</td>
-            <td>
-              <button onClick={() => handleEditar("Sexo", expediente.st_Sexo)}>✏️</button>
-            </td>
-          </tr>
-          <tr>
-        
-            <td>{expediente.dt_FechaNacimiento}</td>
-            <td>
-              <button onClick={() => handleEditar("Fecha de nacimiento", expediente.dt_FechaNacimiento)}>✏️</button>
-            </td>
-          </tr>
-          <tr>
-          
-            <td>{expediente.f_Peso} kg</td>
-            <td>
-              <button onClick={() => handleEditar("Peso", expediente.f_Peso)}>✏️</button>
-            </td>
-          </tr>
-          <tr>
-       
-            <td>{expediente.f_Talla} cm</td>
-            <td>
-              <button onClick={() => handleEditar("Talla", expediente.f_Talla)}>✏️</button>
-            </td>
-          </tr>
-          <tr>
-      
-            <td>{expediente.f_IMC}</td>
-            <td>
-              <button onClick={() => handleEditar("IMC", expediente.f_IMC)}>✏️</button>
-            </td>
-          </tr>
-          <tr>
-           
-            <td>{expediente.st_IMC_clas}</td>
-            <td>
-              <button onClick={() => handleEditar("Clasificación IMC", expediente.st_IMC_clas)}>✏️</button>
-            </td>
-          </tr>
-          <tr>
-   
-            <td>{expediente.st_Observaciones}</td>
-            <td>
-              <button onClick={() => handleEditar("Observaciones", expediente.st_Observaciones)}>✏️</button>
-            </td>
-          </tr>
-          <tr>
+        <div className="exp-header-info">
+          <h2>
+            {expediente.st_Nombre} {expediente.st_ApellidoP}
+          </h2>
+          <span className="badge-imc">
+            IMC {expediente.f_IMC} · {expediente.st_IMC_clas}
+          </span>
+        </div>
 
-            <td>Statuts:{expediente.paso1_status}</td>
-            <td>
-              <button onClick={() => handleEditar("Status Registro", expediente.paso1_status)}>✏️</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      {/* Tus botones de acciones existentes */}
-      <div className="acciones-expediente">
-        <button className="accion-btn" onClick={() => alert("Hola, soy el botón PDF")}>
-          📄 PDF
-        </button>
-        <button className="accion-btn" onClick={() => alert("Hola, soy el botón Excel")}>
-          📊 Excel
-        </button>
-        <button className="accion-btn" onClick={() => alert("Hola, soy el botón Imagen")}>
-          🖼️ Imagen
-        </button>
-        <button className="accion-btn" onClick={() => alert("Hola, soy el botón Copiar")}>
-          📋 Copiar
+        <button className="btn-volver" onClick={() => navigate(-1)}>
+          ← Volver
         </button>
       </div>
 
-      <h2 className="titulo-expediente">Progreso del registro</h2>
-      <div className="progreso-pasos">
+  
+      {/* CARDS */}
+      <div className="expediente-grid">
+        <div className="exp-card">
+          <h4>Datos personales</h4>
+          <p>
+            <strong>Nombre:</strong> {expediente.st_Nombre}{" "}
+            {expediente.st_ApellidoP} {expediente.st_ApellidoM}
+          </p>
+          <p>
+            <strong>Email:</strong> {expediente.st_Email}
+          </p>
+          <p>
+            <strong>Celular:</strong> {expediente.st_Celular}
+          </p>
+          <p>
+            <strong>Sexo:</strong> {expediente.st_Sexo || "No especificado"}
+          </p>
+          <p>
+            <strong>Fecha nacimiento:</strong> {expediente.dt_FechaNacimiento}
+          </p>
+        </div>
+
+        <div className="exp-card">
+          <h4>Antropometría</h4>
+          <p>
+            <strong>Peso:</strong> {expediente.f_Peso} kg
+          </p>
+          <p>
+            <strong>Talla:</strong> {expediente.f_Talla} cm
+          </p>
+          <p>
+            <strong>IMC:</strong> {expediente.f_IMC}
+          </p>
+          <p>
+            <strong>Clasificación:</strong> {expediente.st_IMC_clas}
+          </p>
+        </div>
+
+        <div className="exp-card">
+          <h4>Observaciones clínicas</h4>
+          <p>
+            {expediente.st_Observaciones || "Sin observaciones registradas"}
+          </p>
+        </div>
+      </div>
+
+      {/* PROGRESO */}
+      <h3 className="titulo-expediente">Progreso del registro</h3>
+      <div className="progreso-bar">
         {[1, 2, 3, 4, 5].map((step) => (
           <div
             key={step}
-            className={`paso-indicador ${expediente.paso1_status >= step ? "completo" : "pendiente"}`}
-          >
-            {step}
-          </div>
+            className={`paso ${
+              expediente.paso1_status >= step ? "activo" : ""
+            }`}
+          />
         ))}
+
+  
+      </div>
+      <h1>Pasos: {expediente.paso1_status}</h1>
+          {/* ACCIÓN PRINCIPAL */}
+      <div className="expediente-accion">{renderAccionPrincipal()}</div>
+
+            <HistorialClinicoModal
+          open={openHistorial}
+          setOpen={setOpenHistorial}
+          idPaciente={idPaciente}
+          onGuardado={() => {
+            setOpenHistorial(false);
+            cargarExpediente(); // refresca el status
+          }}
+        />
+      
+
+      {/* ACCIONES FLOTANTES */}
+      <div className="acciones-flotantes">
+        <button title="Exportar PDF">📄</button>
+        <button title="Exportar Excel">📊</button>
+        <button title="Imagen">🖼️</button>
+        <button title="Copiar">📋</button>
       </div>
     </div>
-          <button className="btn-volver" onClick={() => navigate(-1)}>← Volver</button>
 
-    </div>
-    </>
     
   );
 };

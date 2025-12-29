@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useUser } from "../context/userContesxt";
+import "../assets/styles/HistorialModal.css"
 
 const FormHistorialClinico = ({ idPaciente, onGuardado }) => {
   const { user } = useUser();
@@ -79,15 +80,19 @@ const FormHistorialClinico = ({ idPaciente, onGuardado }) => {
     <form onSubmit={handleSubmit} className="form-historial">
       <h2>Agregar Historial Clínico</h2>
 
+      <div className="form-section">
       <label>
         Alergias:
         <textarea name="alergias" value={form.alergias} onChange={handleChange} />
       </label>
+      </div>
 
+       <div className="form-section">
       <label>
         Horas de sueño:
         <input type="text" name="horasSueno" value={form.horasSueno} onChange={handleChange} />
       </label>
+      </div>
 
       <label>
         Sustancias (separadas por coma):
