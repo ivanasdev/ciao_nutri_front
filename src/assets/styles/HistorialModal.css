@@ -103,6 +103,7 @@ textarea {
 .form-field label input {
   transform: scale(1.1);
   cursor: pointer;
+  background-color: #bae2c1 ;
 }
 
 .sustancia-row {
@@ -126,3 +127,64 @@ textarea {
   color: inherit;
 }
 
+.form-field select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: transparent;
+}
+.pretty-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.chip-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.chip {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(42, 200, 55, 0.969);
+  background:  #47a721a1;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.chip:hover {
+  background: rgba(96, 244, 15, 0.05);
+}
+
+.pretty-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.number-center {
+  text-align: center;
+}
+
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px 12px;
+  margin-top: 6px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}

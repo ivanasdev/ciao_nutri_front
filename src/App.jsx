@@ -21,16 +21,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import BuscadorAlimentos from "./forms/BuscadorHome";
 import PacientesDashboard from "./screens/PacientesMain";
 import NutriPlansPromo from "./screens/ServicesHome";
+import SidebarPopup from "./screens/SidePop";
 
 
 function AppContent() {
-  const { user } = useUser();  // <-- lee si el user está logueado
+  const { user,logout } = useUser();  // <-- lee si el user está logueado
 
   const isLogged = !!user;     // true si hay usuario
 
   return (
  <BrowserRouter>
-
+    <SidebarPopup logout={logout} />
       
       <Routes>
 

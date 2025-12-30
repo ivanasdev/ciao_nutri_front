@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useUser } from "../context/userContesxt";
-import "../assets/styles/NewPatient.css"
+import "../assets/styles/NewPatient.css";
 
 const CrearPacienteModal = ({ open, setOpen, idNutriologo }) => {
-
-
   const { user } = useUser();
 
   const [form, setForm] = useState({
@@ -20,42 +18,37 @@ const CrearPacienteModal = ({ open, setOpen, idNutriologo }) => {
     f_Talla: "",
     f_IMC: "",
     st_IMC_clas: "",
-    st_Observaciones: ""
+    st_Observaciones: "",
   });
 
   // Calcular IMC automáticamente
-useEffect(() => {
-  const peso = parseFloat(form.f_Peso);
-  const talla = parseFloat(form.f_Talla);
+  useEffect(() => {
+    const peso = parseFloat(form.f_Peso);
+    const talla = parseFloat(form.f_Talla);
 
-  if (
-    isNaN(peso) ||
-    isNaN(talla) ||
-    peso <= 0 ||
-    talla <= 0
-  ) {
+    if (isNaN(peso) || isNaN(talla) || peso <= 0 || talla <= 0) {
+      setForm((prev) => ({
+        ...prev,
+        f_IMC: "",
+        st_IMC_clas: "",
+      }));
+      return;
+    }
+
+    const imc = peso / (talla * talla);
+
+    let clas = "";
+    if (imc < 18.5) clas = "Bajo";
+    else if (imc < 25) clas = "Normal";
+    else if (imc < 30) clas = "Sobrepeso";
+    else clas = "Obesidad";
+
     setForm((prev) => ({
       ...prev,
-      f_IMC: "",
-      st_IMC_clas: "",
+      f_IMC: imc.toFixed(1),
+      st_IMC_clas: clas,
     }));
-    return;
-  }
-
-  const imc = peso / (talla * talla);
-
-  let clas = "";
-  if (imc < 18.5) clas = "Bajo";
-  else if (imc < 25) clas = "Normal";
-  else if (imc < 30) clas = "Sobrepeso";
-  else clas = "Obesidad";
-
-  setForm((prev) => ({
-    ...prev,
-    f_IMC: imc.toFixed(1),
-    st_IMC_clas: clas,
-  }));
-}, [form.f_Peso, form.f_Talla]);
+  }, [form.f_Peso, form.f_Talla]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -69,23 +62,18 @@ useEffect(() => {
         id_nutriologo: idNutriologo,
       };
 
-         const URINP = import.meta.env.VITE_NEW_PATIENT;
+      const URINP = import.meta.env.VITE_NEW_PATIENT;
 
-      const resp = await axios.post(
-        URINP,
-        payload,
-        {
-            headers: {
-            Authorization: `Bearer ${user.bearer_token}`,
-            "Content-Type": "application/json"
-            }
-        }
-        );
+      const resp = await axios.post(URINP, payload, {
+        headers: {
+          Authorization: `Bearer ${user.bearer_token}`,
+          "Content-Type": "application/json",
+        },
+      });
 
       console.log(resp.data);
       alert("Paciente creado correctamente");
       setOpen(false);
-
     } catch (err) {
       console.error(err);
       alert("Error al crear paciente");
@@ -111,76 +99,138 @@ useEffect(() => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            
           >
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
 
+        <div className="form-section">
+          <h5 className="section-title">NUEVO PACIENTE</h5>
+          <h6 className="section-title">- DATOS PERSONALES -</h6>
+          <div className="form-grid">
+            <div className="form-section">
+              <label>
+                NOMBRE:
+                <input
+                  type="text"
+                  name="st_Nombre"
+                  placeholder="Nombre"
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
+
+            <div className="form-section">
+              <label>
+                AP:
+                <input
+                  type="text"
+                  name="st_ApellidoP"
+                  placeholder="Apellido Paterno"
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
+
+            <div className="form-section">
+              <label>
+                AM:
+             <input
+              type="text"
+              name="st_ApellidoM"
+              placeholder="Apellido Materno"
+              onChange={handleChange}
+            />
+              </label>
+            </div>
+       <div className="form-section">
+              <label>
+                GENERO:
+            <select name="st_Sexo" onChange={handleChange}>
+              <option>Masculino</option>
+              <option>Femenino</option>
+              <option>Otro</option>
+            </select>
+    
+            </label>
+            </div>
 
 
-<div className="form-section">
-         <h5 className="section-title">NUEVO PACIENTE</h5>
-  <h6 className="section-title">- Datos personales -</h6>
-  <div className="form-grid">
-    <input type="text" name="st_Nombre" placeholder="Nombre" onChange={handleChange} />
-    <input type="text" name="st_ApellidoP" placeholder="Apellido Paterno" onChange={handleChange} />
-    <input type="text" name="st_ApellidoM" placeholder="Apellido Materno" onChange={handleChange} />
-    <select name="st_Sexo" onChange={handleChange}>
-      <option>Hombre</option>
-      <option>Mujer</option>
-      <option>Otro</option>
-    </select>
-    <input type="date" name="dt_FechaNacimiento" onChange={handleChange} />
-  </div>
-</div>
+       <div className="form-section">
+              <label>
+                FN:
+                    <input
+              type="date"
+              name="dt_FechaNacimiento"
+              onChange={handleChange}
+            />
+            </label>
+            </div>
+            
 
-<div className="form-section">
-  <h6 className="section-title">Contacto</h6>
-  <div className="form-grid">
-    <input type="email" name="st_Email" placeholder="Email" onChange={handleChange} />
-    <input type="text" name="st_Celular" placeholder="Teléfono" onChange={handleChange} />
-  </div>
-</div>
+          </div>
+        </div>
 
-<div className="form-section">
-  <h6 className="section-title">Datos antropométricos</h6>
-  <div className="form-grid">
-<input
-  type="number"
-  step="0.1"
-  name="f_Peso"
-  placeholder="Peso (kg)"
-  onChange={handleChange}
-/>
+        <div className="form-section">
+          <h6 className="section-title">Contacto</h6>
+          <div className="form-grid">
+            <input
+              type="email"
+              name="st_Email"
+              placeholder="Email"
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              name="st_Celular"
+              placeholder="Teléfono"
+              onChange={handleChange}
+            />
+          </div>
+        </div>
 
-<input
-  type="number"
-  step="0.01"
-  name="f_Talla"
-  placeholder="Talla (m)"
-  onChange={handleChange}
-/>
+        <div className="form-section">
+          <h6 className="section-title">Datos antropométricos</h6>
+          <div className="form-grid">
+            <input
+              type="number"
+              step="0.1"
+              name="f_Peso"
+              placeholder="Peso (kg)"
+              onChange={handleChange}
+            />
 
-    <input type="text" value={form.f_IMC} placeholder="IMC" disabled />
-    <input type="text" value={form.st_IMC_clas} placeholder="Clasificación" disabled />
-  </div>
-</div>
+            <input
+              type="number"
+              step="0.01"
+              name="f_Talla"
+              placeholder="Talla (m)"
+              onChange={handleChange}
+            />
 
-<div className="form-section">
-  <h6 className="section-title">Observaciones</h6>
-  <textarea
-    name="st_Observaciones"
-    placeholder="Notas clínicas u observaciones"
-    onChange={handleChange}
-  />
-</div>
+            <input type="text" value={form.f_IMC} placeholder="IMC" disabled />
+            <input
+              type="text"
+              value={form.st_IMC_clas}
+              placeholder="Clasificación"
+              disabled
+            />
+          </div>
+        </div>
 
-<button className="btn-save" onClick={enviarFormulario}>
-  Guardar
-</button>
+        <div className="form-section">
+          <h6 className="section-title">Observaciones</h6>
+          <textarea
+            name="st_Observaciones"
+            placeholder="Notas clínicas u observaciones"
+            onChange={handleChange}
+          />
+        </div>
 
+        <button className="btn-save" onClick={enviarFormulario}>
+          Guardar
+        </button>
       </div>
     </div>
   );

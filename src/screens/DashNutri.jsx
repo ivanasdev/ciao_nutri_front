@@ -14,7 +14,7 @@ import { useUser } from "../context/userContesxt";
 
 //Modales
 import InfoNutriologoModal from "./Nutri_Info";
-import SidebarPopup from "./SidePop";
+
 
 import NutriHeaderMain from "./NutriHeader";
 import ProgressDashboard from "./MetricsHome";
@@ -29,14 +29,19 @@ const DashboardNutriologo = () => {
   return (
     <>
       <div className="dashboard-container">
-        {/* Sidebar 
-      <SidebarPopup logout={logout} />
-      */}
+     
+    
+   
 
-        {/* Main content */}
+        {/* Main visible content */}
+
+        {/*NavBar
         <NutriHeaderMain user={user} onLogout={logout} />
+        */}
         <main className="main-content">
-          <ToolsGrid
+        
+        {/*Gadget bar*/}
+         <ToolsGrid
             setShowCrear={setShowCrear}
             setShowMisPacientes={setShowMisPacientes}
             setShowCrearCita={setShowCrearCita}
@@ -45,6 +50,7 @@ const DashboardNutriologo = () => {
           <ProgressDashboard />
 
           {/*MODALES*/}
+          {/*Hiden content*/}
 
           <CrearPacienteModal
             open={showCrear}

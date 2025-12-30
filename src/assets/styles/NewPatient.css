@@ -40,7 +40,7 @@
 .section-title {
   text-align: center;
   font-weight: 600;
-  color: #2e3d32;
+  color: #059856;
   margin-bottom: 14px;
   letter-spacing: .5px;
 }
@@ -58,6 +58,7 @@ textarea {
   border: 1px solid #dce7df;
   font-size: 14px;
   background: #f9fcfa;
+  color: #000000;
   transition: border .2s ease, box-shadow .2s ease;
 }
 
@@ -88,7 +89,7 @@ input[placeholder="Clasificación"] {
   padding: 14px;
   border-radius: 14px;
   border: none;
-  background: linear-gradient(135deg,#7cbf8c,#4e9f6b);
+  background: linear-gradient(135deg,#7cbf8c,#0d85b9);
   color: white;
   font-size: 15px;
   font-weight: 600;

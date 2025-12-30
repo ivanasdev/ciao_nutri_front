@@ -6,10 +6,14 @@ import img3 from "../assets/icons/nplan.png";
 import img4 from "../assets/icons/frying-pan.png";
 import img5 from "../assets/icons/metri.png";
 import img6 from "../assets/icons/ch.png";
+import { useUser } from "../context/userContesxt";
 
 const ToolsGrid = ({ setShowCrear, setShowMisPacientes, setShowCrearCita }) => {
   const [openMenu, setOpenMenu] = useState(null);
+  const { user } = useUser();
   const navigate = useNavigate();
+  console.log("TOOLSHOME")
+  console.log(user.id_nutriologo)
 
   const toggleMenu = (menu) => {
     setOpenMenu(openMenu === menu ? null : menu);
@@ -17,7 +21,7 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes, setShowCrearCita }) => {
 
   return (
     <>
-      <h4 className="section-title">Mis Gadgets</h4>
+      <h4 className="section-title">Hola  </h4>
 
       <div className="grid-tools">
         {/* --- PACIENTES --- */}
@@ -28,7 +32,7 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes, setShowCrearCita }) => {
 
         {openMenu === "pacientes" && (
           <div className="submenu-card">
-            <p onClick={() => setShowCrear(true)}>Crear paciente</p>
+            <p onClick={() => setShowCrear(true)}>Nuevo paciente</p>
             <p onClick={() => setShowMisPacientes(true)}>Mis pacientes</p>
 
           </div>

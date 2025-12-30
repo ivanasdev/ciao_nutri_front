@@ -9,7 +9,8 @@ import img4 from "../assets/icons/function.png";
 import img5 from "../assets/icons/bar.png";
 import img6 from "../assets/icons/toff.png";
 import { useUser } from "../context/userContesxt";
-
+import "../assets/styles/BarNav.css"
+import SidebarPopup from "./SidePop";
 
 function NutriHeaderMain() {
   const { logout } = useUser();   // <-- sacamos solo la función logout
@@ -29,8 +30,10 @@ function NutriHeaderMain() {
   };
 
   return (
-    <div className="hc_01">
-      <div className="header-buttons">
+    <>
+
+    <div className="MainNB">
+      <div className="HIcons">
 
         <button className="nav-btn"   onClick={() => navigate("/pacientes_dash")}>
                
@@ -49,9 +52,7 @@ function NutriHeaderMain() {
           <img src={img2} className="img-headerTop" />
         </button>
 
-        <button className="nav-btn" onClick={() => handleClick("Funciones")}>
-          <img src={img4} className="img-headerTop" />
-        </button>
+
 
   
 
@@ -72,6 +73,9 @@ function NutriHeaderMain() {
       </div>
 
     </div>
+        <SidebarPopup logout={logout} />
+
+    </>
   );
 }
 
