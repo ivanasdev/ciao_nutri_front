@@ -188,3 +188,52 @@ textarea {
   cursor: pointer;
   font-size: 14px;
 }
+
+.date-input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: #bae2c1;
+  color: #0f2027;
+  cursor: pointer;
+}
+
+/* Icono del calendario */
+.date-input::-webkit-calendar-picker-indicator {
+  filter: invert(0.3);
+  cursor: pointer;
+}
+
+/* Focus bonito */
+.date-input:focus {
+  box-shadow: 0 0 0 2px #4fd1c5;
+}
+
+.select-input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+background: #bae2c1;
+  color: #0f2027;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Flecha custom */
+.select-input {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%230f2027'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px;
+}
+
+/* Focus */
+.select-input:focus {
+  box-shadow: 0 0 0 2px #4fd1c5;
+}

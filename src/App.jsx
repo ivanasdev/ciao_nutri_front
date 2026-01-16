@@ -22,6 +22,11 @@ import BuscadorAlimentos from "./forms/BuscadorHome";
 import PacientesDashboard from "./screens/PacientesMain";
 import NutriPlansPromo from "./screens/ServicesHome";
 import SidebarPopup from "./screens/SidePop";
+import NavBarCiao from "./navigation/BarNav";
+import EncuestaMain from "./screens/EncuestaScreen";
+import PlansChoise from "./screens/ChoosePlan";
+import RegisterForm from "./forms/newUser";
+import PaymentScreen from "./forms/Pay";
 
 
 function AppContent() {
@@ -31,14 +36,39 @@ function AppContent() {
 
   return (
  <BrowserRouter>
-    <SidebarPopup logout={logout} />
+ 
+      {!isLogged
+        ? null
+        : <SidebarPopup logout={logout} />
+      }
+         <NavBarCiao/>
+
       
       <Routes>
+    
 
         {/* Home */}
         <Route
           path="/"
           element={!isLogged ? <HomePage /> : <Navigate to="/home_nutri" />}
+        />
+            <Route
+          path="/payment"
+          element={<PaymentScreen  />}
+        />
+
+              <Route
+          path="/planselect"
+          element={<PlansChoise  />}
+        />
+              <Route
+          path="/regsignup"
+          element={<RegisterForm  />}
+        />
+
+        <Route
+          path="/f1"
+          element={<EncuestaMain/>}
         />
 
         {/* Login */}

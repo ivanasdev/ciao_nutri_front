@@ -9,6 +9,11 @@ import img6 from "../assets/icons/ch.png";
 import { useUser } from "../context/userContesxt";
 
 const ToolsGrid = ({ setShowCrear, setShowMisPacientes, setShowCrearCita }) => {
+
+    const toggleView = (view) => {
+    setActiveView(view);
+  };
+  
   const [openMenu, setOpenMenu] = useState(null);
   const { user } = useUser();
   const navigate = useNavigate();
@@ -38,7 +43,7 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes, setShowCrearCita }) => {
           </div>
         )}
 
-        {/* --- CITAS --- */}
+        {/* --- CITAS --- ≈
         <div className="tool-card" onClick={() => toggleMenu("citas")}>
           <h5 className="header-title">Agenda</h5>
           <img className="imgmenu" src={img2} />
@@ -52,7 +57,7 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes, setShowCrearCita }) => {
           </div>
         )}
 
-        {/* --- Retos --- */}
+        Retos --- ≈
         <div className="tool-card" onClick={() => toggleMenu("mensajes")}>
           <h5 className="header-title">Retos</h5>
           <img className="imgmenu" src={img6} />
@@ -64,6 +69,7 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes, setShowCrearCita }) => {
             <p>Nuevo mensaje</p>
           </div>
         )}
+          √å
 
         {/* --- PLANES --- */}
         <div className="tool-card" onClick={() => toggleMenu("planes")}>
@@ -111,6 +117,19 @@ const ToolsGrid = ({ setShowCrear, setShowMisPacientes, setShowCrearCita }) => {
         {/* --- MENSAJES --- */}
         <div className="tool-card" onClick={() => toggleMenu("mensajes")}>
           <h5 className="header-title">Mensajes</h5>
+          <img className="imgmenu" src={img6} />
+        </div>
+
+        {openMenu === "mensajes" && (
+          <div className="submenu-card">
+            <p>✉ Bandeja de entrada</p>
+            <p>📝 Nuevo mensaje</p>
+          </div>
+        )}
+
+         {/* --- MENSAJES --- */}
+        <div className="tool-card" onClick={() => toggleMenu("mensajes")}>
+          <h5 className="header-title">Mi perfil</h5>
           <img className="imgmenu" src={img6} />
         </div>
 

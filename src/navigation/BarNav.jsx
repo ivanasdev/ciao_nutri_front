@@ -1,65 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useUser } from "../contexts/userContext";
-
+import "../assets/styles/Nav.css";
 
 const NavBarCiao = () => {
-  const { user, logout } = useUser();
-
   return (
-    <nav className="navbar navbar-expand-lg navbar-transparent py-3">
-      <div className="container">
-        <Link className="navbar-brand fw-bold" to="/">
-          NutriSoft
-        </Link>
+    <nav className="navbar">
+                <h1 className="titleNav">CIAO NUTRI</h1>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+      <div className="navbar-container">
 
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <Link className="nav-link text-white" to="/">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link text-white" to="/dash_nutri">
-                Dashboard
-              </Link>
-            </li>
-            {user ? (
-              <>
-                <li className="nav-item">
-                  <span className="nav-link text-white">Hola, {user.name_user}</span>
-                </li>
-                <li className="nav-item">
-                  <button
-                    className="btn btn-outline-light ms-2"
-                    onClick={logout}
-                  >
-                    Cerrar sesión
-                  </button>
-                </li>
-              </>
-            ) : (
-              <li className="nav-item">
-                <Link className="nav-link text-white" to="/login">
-                  Login
-                </Link>
-              </li>
-            )}
-          </ul>
-        </div>
+        <ul className="navbar-links">
+          <li>
+            <Link to="/moreinfo">RETOS MENSUALES</Link>
+          </li>
+          <li>
+            <Link to="/planes">SOBRE NOSOSTROS</Link>
+          </li>
+          <li>
+            <Link to="/contacto">RECETARIO</Link>
+          </li>
+          <li>
+            <Link to="/contacto">BLOG</Link>
+          </li>
+          <li>
+            <Link to="/contacto">COMENTARIOS</Link>
+          </li>
+          <li>
+            <Link to="/contacto">CONTACTO</Link>
+          </li>
+          <li>
+            <Link to="/login_nutri" className="navbar-btn">
+              Iniciar sesión
+            </Link>
+          </li>
+        </ul>
       </div>
     </nav>
   );
